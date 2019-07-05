@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap');
+
+$primary: #f6d347;
+$primary-shadow: #bb851d;
+
+$background: #2A9D8F;
+
+body{
+  height: 400px;
+  background: $background;
+  font-family: 'Rubik', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+}
+
+h1{
+  font-size: 50px;
+  color: darken( $background, 30%);
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.word{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.tile{
+  font-family: 'Rubik', sans-serif;
+  display: flex;
+  flex-direction: row;
+  font-size: 50px;
+  font-weight: 500;
+  width: 80px;
+  margin: 20px 10px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  align-items: center;
+  justify-content:center;
+  box-shadow: 0px 8px 0px 0px $primary-shadow;
+  filter: drop-shadow(0px 5px 2px rgba(32,40,43,.8));
+  background: $primary;
+  color: #333;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+input{
+  background: lighten($background,10%);
+  width: 500px;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Rubik', sans-serif;
+  font-size: 30px;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 2px;
+
+  &::placeholder {
+    color: darken($background, 12%);
+   }
+}
+
+.user{
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+#random-string{
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 50px;
+  letter-spacing: 2px;
+  margin-top: 20px;
+}
