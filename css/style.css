@@ -27,7 +27,7 @@ h1 {
   font-size: 50px;
   font-weight: 500;
   width: 80px;
-  margin: 20px 10px;
+  margin: 20px 5px;
   padding-top: 20px;
   padding-bottom: 20px;
   align-items: center;
@@ -59,6 +59,13 @@ input {
 .user {
   margin-top: 40px;
   margin-bottom: 40px; }
+
+#display-word {
+  display: flex;
+  flex-direction: row;
+  height: 300px;
+  align-items: center;
+  justify-content: center; }
 
 #random-string {
   text-transform: uppercase;
