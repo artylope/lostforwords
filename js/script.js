@@ -1,11 +1,52 @@
-
 var displayWord = document.querySelector('#display-word');
 document.querySelector('#user-word').autofocus;
 
+var check1;
+var check2;
+
+
 var inputBox = document.querySelector('#user-word');
+
+var isInList = function(word){
+  var status = "";
+  console.log('works');
+  for (var i = 0; i < wordList.length; i++){
+    //console.log("word is  " + i + "  " + wordList[i]);
+    if (word === wordList[i]){
+      console.log(word);
+      console.log(wordList[i]);
+      console.log('match');
+      //console.log("yey")
+      status = true;
+      break;
+    } else {
+      //console.log("meh");
+      status = false;
+      //return false;
+    }
+  }
+  console.log("status: " + status);
+  return status;
+}
+
+var isValidLetters = function(word){
+  return true;
+}
 
 var checkWord = function(word){
   console.log('checking ' + word);
+
+  check1 = isInList(word);
+  check2 = isValidLetters(word);
+
+  console.log(check1);
+  console.log(check2);
+
+  if ( check1 === true && check2 === true){
+    console.log('+1 yay!');
+  } else {
+    console.log('meh!');
+  }
 }
 
 inputBox.addEventListener('input', function(event){
@@ -70,11 +111,3 @@ var generateRandomStr = function (length){
 randomStr = generateRandomStr(10);
 console.log(randomStr);
 displayRandomStr(randomStr);
-
-
-
-//get a list of accepted Words
-
-//check win
-//letters of words exist in random string
-//
