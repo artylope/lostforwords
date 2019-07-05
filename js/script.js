@@ -1,7 +1,12 @@
 
+var displayWord = document.querySelector('#display-word');
 document.querySelector('#user-word').autofocus;
 
 var inputBox = document.querySelector('#user-word');
+
+var checkWord = function(word){
+  console.log('checking ' + word);
+}
 
 inputBox.addEventListener('input', function(event){
   console.clear();
@@ -11,14 +16,20 @@ inputBox.addEventListener('input', function(event){
   console.log('end');
 })
 
-// inputBox.addEventListener('input', function(){
-//   submitWord();
-// })
+inputBox.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+      console.log('enter ' + event.target.value);
+      checkWord(event.target.value);
+      displayWord.innerHTML = "";
+      inputBox.value = ""
+    }
+});
+
 
 var randomStr = "";
 
 
-var displayWord = document.querySelector('#display-word');
+
 
 //in input box, if not empty, on enter, submitwords
 var displayTiles = function(word){
