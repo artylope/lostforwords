@@ -1,19 +1,29 @@
 
 document.querySelector('#user-word').autofocus;
 
+var inputBox = document.querySelector('#user-word');
+
+inputBox.addEventListener('input', function(event){
+  console.clear();
+  console.log('start');
+  displayTiles(event.target.value);
+  console.log(event);
+  console.log('end');
+})
+
+// inputBox.addEventListener('input', function(){
+//   submitWord();
+// })
+
 var randomStr = "";
 
 
 var displayWord = document.querySelector('#display-word');
 
-var getWord = function(){
-  var userWord = document.querySelector('#user-word').value;
-  console.log(userWord);
-  displayTiles(userWord);
-}
-
+//in input box, if not empty, on enter, submitwords
 var displayTiles = function(word){
 
+  console.log(word);
   var userTiles = word.split('');
   console.log(userTiles);
   // displayWord.innerText = '';
@@ -49,7 +59,6 @@ var generateRandomStr = function (length){
 randomStr = generateRandomStr(10);
 console.log(randomStr);
 displayRandomStr(randomStr);
-
 
 
 
