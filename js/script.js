@@ -110,6 +110,13 @@ var NotGuessedBefore = function(word){
   return true;
 }
 
+//this function display the score
+
+var displayScore = function(score){
+  var scoreDiv = document.querySelector('#score');
+  scoreDiv.innerText = score;
+}
+
 // this function passes the word into 3 checks (isInStr,  isInList and NotGuessedBefore), if passes 2 checks, user gets 1 point, else no points.
 var checkUserWord = function(word){
   console.log('checking ' + word);
@@ -122,6 +129,7 @@ var checkUserWord = function(word){
 
   if ( checkInList === true && checkInStr === true){
     score += 1;
+    displayScore(score);
     console.log('total score ' + score);
   } else {
     console.log('meh!');
