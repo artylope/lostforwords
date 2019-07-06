@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap");
 body {
   height: 400px;
-  background: #2A9D8F;
+  background: #245490;
   font-family: 'Rubik', sans-serif;
   display: flex;
   flex-direction: column;
@@ -10,7 +10,7 @@ body {
 
 h1 {
   font-size: 50px;
-  color: #0a2421;
+  color: #050d16;
   margin-top: 50px;
   margin-bottom: 50px; }
 
@@ -18,7 +18,8 @@ h1 {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  height: 300px; }
 
 .tile {
   font-family: 'Rubik', sans-serif;
@@ -40,7 +41,7 @@ h1 {
   text-transform: uppercase; }
 
 input {
-  background: #35c5b4;
+  background: #2e6cb9;
   width: 500px;
   border: none;
   border-radius: 5px;
@@ -54,18 +55,11 @@ input {
   font-weight: 500;
   letter-spacing: 2px; }
   input::placeholder {
-    color: #1d6d63; }
+    color: #18375f; }
 
 .user {
   margin-top: 40px;
   margin-bottom: 40px; }
-
-#display-word {
-  display: flex;
-  flex-direction: row;
-  height: 300px;
-  align-items: center;
-  justify-content: center; }
 
 #random-string {
   text-transform: uppercase;

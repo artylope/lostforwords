@@ -1,12 +1,35 @@
 var displayWord = document.querySelector('#display-word');
-document.querySelector('#user-word').autofocus;
-
-var check1;
-var check2;
-
-
 var inputBox = document.querySelector('#user-word');
+var randomStringDiv = document.querySelector('#random-string');
 
+var randomStr = "";
+var userWord = "";
+
+var checkInList;
+var checkInStr;
+
+
+//generate random string
+var generateRandomStr = function (length){
+   var result           = '';
+   var characters       = 'abcdefghijklmnopqrstuvwxyz';
+   var charactersLength = characters.length;
+   for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   return result;
+}
+
+//display random string in the random string div
+var displayRandomStr = function(string){
+  randomStringDiv.innerText = randomStr.toUpperCase();
+}
+
+randomStr = generateRandomStr(10);
+console.log(randomStr);
+displayRandomStr(randomStr);
+
+// this function checks if the userWord is an actual word in the dictionary (words collected in the wordList array in words.js)
 var isInList = function(word){
   var status = "";
   console.log('works');
@@ -29,50 +52,37 @@ var isInList = function(word){
   return status;
 }
 
-var isValidLetters = function(word){
+// this function checks if the userWord is in the randomStr generated.
+var isInStr = function(word,string){
+
+  string = string.split('');
+  word = word.split('');
+  console.log('is valid letters   ');
+  console.log(string);
+  console.log(word);
+
   return true;
 }
 
-var checkWord = function(word){
+// this function passes the word into 2 checks (isInStr and isInList), if passes 2 checks, user gets 1 point, else no points.
+var checkUserWord = function(word){
   console.log('checking ' + word);
 
-  check1 = isInList(word);
-  check2 = isValidLetters(word);
+  checkInList = isInList(word);
+  checkInStr  = isInStr(word,randomStr);
 
-  console.log(check1);
-  console.log(check2);
+  // console.log(checkInList);
+  // console.log(checkInStr);
 
-  if ( check1 === true && check2 === true){
+  if ( checkInList === true && checkInStr === true){
     console.log('+1 yay!');
   } else {
     console.log('meh!');
   }
 }
 
-inputBox.addEventListener('input', function(event){
-  console.clear();
-  console.log('start');
-  displayTiles(event.target.value);
-  console.log(event);
-  console.log('end');
-})
 
-inputBox.addEventListener('keypress', function (event) {
-    if (event.key === 'Enter') {
-      console.log('enter ' + event.target.value);
-      checkWord(event.target.value);
-      displayWord.innerHTML = "";
-      inputBox.value = ""
-    }
-});
-
-
-var randomStr = "";
-
-
-
-
-//in input box, if not empty, on enter, submitwords
+//displaying the words into tiles. creating tiles on demand.
 var displayTiles = function(word){
 
   console.log(word);
@@ -91,23 +101,24 @@ var displayTiles = function(word){
 
 }
 
-//display random string in the random string div
-var displayRandomStr = function(randomStr){
-  var randomStringDiv = document.querySelector('#random-string');
-  randomStringDiv.innerText = randomStr;
-}
 
-//generate random string
-var generateRandomStr = function (length){
-   var result           = '';
-   var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-   var charactersLength = characters.length;
-   for ( var i = 0; i < length; i++ ) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-   }
-   return result;
-}
+// add event listener to input box, detect any input and display the word in the tiles
+inputBox.addEventListener('input', function(event){
+  console.clear();
+  console.log('start');
+  userWord = (event.target.value).toLowerCase();
+  var displayUserWord = userWord.toUpperCase();
+  displayTiles(displayUserWord);
+  console.log(event);
+  console.log('end');
+})
 
-randomStr = generateRandomStr(10);
-console.log(randomStr);
-displayRandomStr(randomStr);
+// add event listener to the input box, detect user enter to submit words for check and clear the inputs
+inputBox.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+      console.log('enter ' + event.target.value);
+      checkUserWord(userWord);
+      displayWord.innerHTML = "";
+      inputBox.value = "";
+    }
+});
