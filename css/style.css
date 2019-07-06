@@ -57,7 +57,8 @@ h1 {
 #scoreboard {
   position: absolute;
   right: 0;
-  top: 0; }
+  top: 0;
+  z-index: 99; }
   #scoreboard #board {
     background: #f9f9f9;
     box-shadow: 0px 2px 0px 0px #c8c8c8;
