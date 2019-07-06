@@ -25,7 +25,18 @@ var generateRandomStr = function (length){
 
 //display random string in the random string div
 var displayRandomStr = function(string){
-  randomStringDiv.innerText = randomStr.toUpperCase();
+  randomStringDiv.innerText = string.toUpperCase();
+  var randomStringTiles = string.split('');
+  randomStringDiv.innerHTML = "";
+
+  for(var i = 0; i < randomStringTiles.length; i++){
+    var tile = document.createElement('div');
+    tile.innerText = randomStringTiles[i];
+    tile.setAttribute('class', 'tile');
+    tile.classList.add("smaller");
+    randomStringDiv.appendChild(tile);
+  }
+
 }
 
 randomStr = generateRandomStr(10);
@@ -147,3 +158,6 @@ inputBox.addEventListener('keypress', function (event) {
       inputBox.value = "";
     }
 });
+
+//keep an array of all guessed words, make sure not repeated
+//should give more points to longer words

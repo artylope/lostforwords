@@ -11,9 +11,15 @@ body {
   margin: 0 auto; }
 
 h1 {
-  font-size: 50px;
-  color: black;
+  font-size: 80px;
+  color: #f6d347;
   margin-top: 50px;
+  margin-bottom: 10px; }
+
+.tagline {
+  color: #bb851d;
+  font-size: 20px;
+  margin-top: 10px;
   margin-bottom: 50px; }
 
 .word {
@@ -41,6 +47,10 @@ h1 {
   color: #333;
   border-radius: 5px;
   text-transform: uppercase; }
+  .tile.smaller {
+    font-size: 30px;
+    width: 60px;
+    margin: 10px 5px; }
 
 .instruction {
   position: absolute;
@@ -92,6 +102,8 @@ input {
   margin-bottom: 40px; }
 
 #random-string {
+  display: flex;
+  flex-direction: row;
   text-transform: uppercase;
   font-weight: 500;
   font-size: 50px;

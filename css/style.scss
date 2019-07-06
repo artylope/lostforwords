@@ -19,12 +19,18 @@ body{
 }
 
 h1{
-  font-size: 50px;
-  color: darken( $background, 30%);
+  font-size: 80px;
+  color: $primary;
   margin-top: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 }
 
+.tagline{
+  color: $primary-shadow;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
 .word{
   display: flex;
   flex-direction: row;
@@ -51,7 +57,14 @@ h1{
   color: #333;
   border-radius: 5px;
   text-transform: uppercase;
+
+  &.smaller{
+    font-size: 30px;
+    width: 60px;
+    margin: 10px 5px;
+  }
 }
+
 
 
 .instruction{
@@ -117,6 +130,8 @@ input{
 }
 
 #random-string{
+  display: flex;
+  flex-direction: row;
   text-transform: uppercase;
   font-weight: 500;
   font-size: 50px;
