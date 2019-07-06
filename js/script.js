@@ -159,5 +159,14 @@ inputBox.addEventListener('keypress', function (event) {
     }
 });
 
+//check if can form word from random string, enough letters.
 //keep an array of all guessed words, make sure not repeated
+//reject special characters
+
+
 //should give more points to longer words
+//make random strinng generator better. at least 2 vowels
+//get all possible words from the generated string.
+//- points if reset string or make time shorter (if no more words possible)
+//using difficult letters give more points, like scrabble.
+//wrong word something happen.

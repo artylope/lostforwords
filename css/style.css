@@ -50,7 +50,9 @@ h1 {
   .tile.smaller {
     font-size: 30px;
     width: 60px;
-    margin: 10px 5px; }
+    margin: 10px 5px;
+    padding-top: 15px;
+    padding-bottom: 15px; }
 
 .instruction {
   position: absolute;
@@ -108,5 +110,4 @@ input {
   font-weight: 500;
   font-size: 50px;
   letter-spacing: 2px;
-  margin-top: 20px;
   color: #E9C46A; }
