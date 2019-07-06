@@ -181,7 +181,7 @@ inputBox.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
       console.log('enter ' + event.target.value);
       checkUserWord(userWord);
-      displayWord.innerHTML = "";
+      // displayWord.innerHTML = "";
       inputBox.value = "";
     } else if (event.key === ' ') {
       userWord = "";
