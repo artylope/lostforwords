@@ -12,14 +12,37 @@ var checkInStr;
 var checkNotGuessedBefore;
 
 
+//function to shuffle generated string
+var shuffleStr = function(string){
+    var a = string.split(""),
+        n = a.length;
+
+    for(var i = n - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = a[i];
+        a[i] = a[j];
+        a[j] = tmp;
+    }
+    return a.join("");
+}
+
 //generate random string
-var generateRandomStr = function (length){
+var generateRandomStr = function (vowelsNum, consonantsNum){
    var result           = '';
-   var characters       = 'abcdefghijklmnopqrstuvwxyz';
-   var charactersLength = characters.length;
-   for ( var i = 0; i < length; i++ ) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+
+   var vowels           = 'aeiou';
+   var vowelsLength     = vowels.length;
+   for ( var i = 0; i < vowelsNum; i++ ) {
+      result += vowels.charAt(Math.floor(Math.random() * vowelsLength));
    }
+
+   var consonants       = 'bcdfghjklmnpqrstvwxyz';
+   var consonantsLength = consonants.length;
+   for ( var j = 0; j < consonantsNum; j++ ) {
+      result += consonants.charAt(Math.floor(Math.random() * consonantsLength));
+   }
+
+   result = shuffleStr(result);
    return result;
 }
 
@@ -39,7 +62,7 @@ var displayRandomStr = function(string){
 
 }
 
-randomStr = generateRandomStr(10);
+randomStr = generateRandomStr(3,7);
 console.log(randomStr);
 displayRandomStr(randomStr);
 
@@ -162,10 +185,13 @@ inputBox.addEventListener('keypress', function (event) {
 //check if can form word from random string, enough letters.
 //keep an array of all guessed words, make sure not repeated
 //reject special characters
+//a key to reset random tiles
+//make random strinng generator better. 3 vowels
+//display score
+//add timer
 
 
 //should give more points to longer words
-//make random strinng generator better. at least 2 vowels
 //get all possible words from the generated string.
 //- points if reset string or make time shorter (if no more words possible)
 //using difficult letters give more points, like scrabble.
