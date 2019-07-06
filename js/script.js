@@ -5,8 +5,11 @@ var randomStringDiv = document.querySelector('#random-string');
 var randomStr = "";
 var userWord = "";
 
+var score = 0;
+
 var checkInList;
 var checkInStr;
+var checkNotGuessedBefore;
 
 
 //generate random string
@@ -64,18 +67,28 @@ var isInStr = function(word,string){
   return true;
 }
 
-// this function passes the word into 2 checks (isInStr and isInList), if passes 2 checks, user gets 1 point, else no points.
+// this function checks if the userWord has already been guessed as part of this random string.
+var NotGuessedBefore = function(word){
+
+  console.log('in not part of previously guessed word');
+  console.log(word);
+
+  return true;
+}
+
+// this function passes the word into 3 checks (isInStr,  isInList and NotGuessedBefore), if passes 2 checks, user gets 1 point, else no points.
 var checkUserWord = function(word){
   console.log('checking ' + word);
 
-  checkInList = isInList(word);
-  checkInStr  = isInStr(word,randomStr);
-
+  checkInList            = isInList(word);
+  checkInStr             = isInStr(word,randomStr);
+  checkNotGuessedBefore  = NotGuessedBefore(word);
   // console.log(checkInList);
   // console.log(checkInStr);
 
   if ( checkInList === true && checkInStr === true){
-    console.log('+1 yay!');
+    score += 1;
+    console.log('total score ' + score);
   } else {
     console.log('meh!');
   }
@@ -105,19 +118,31 @@ var displayTiles = function(word){
 // add event listener to input box, detect any input and display the word in the tiles
 inputBox.addEventListener('input', function(event){
   console.clear();
+  console.log(event);
   console.log('start');
   userWord = (event.target.value).toLowerCase();
   var displayUserWord = userWord.toUpperCase();
   displayTiles(displayUserWord);
   console.log(event);
   console.log('end');
+    if (event.target.value.includes(' ')) {
+      userWord = "";
+      displayWord.innerHTML = "";
+      inputBox.value = "";
+      console.log('clear');
+    }
 })
 
 // add event listener to the input box, detect user enter to submit words for check and clear the inputs
 inputBox.addEventListener('keypress', function (event) {
+    console.log(event);
     if (event.key === 'Enter') {
       console.log('enter ' + event.target.value);
       checkUserWord(userWord);
+      displayWord.innerHTML = "";
+      inputBox.value = "";
+    } else if (event.key === ' ') {
+      userWord = "";
       displayWord.innerHTML = "";
       inputBox.value = "";
     }
