@@ -11,6 +11,9 @@ var checkInList;
 var checkInStr;
 var checkNotGuessedBefore;
 
+var wordCount;
+var randomStrCount;
+
 
 //function to shuffle generated string
 var shuffleStr = function(string){
@@ -62,6 +65,37 @@ var displayRandomStr = function(string){
 
 }
 
+//fucntion to count number of characters
+var countChar = function(string){
+
+  //make all lower case
+  string = string.toLowerCase();
+  //remove special characters
+  string = string.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g,'');
+  //remove space
+  string = string.split(' ').join('');
+  // console.log(string);
+
+   //array to store the counts
+  var counts = {};
+  var letter, count;
+  for (var i =0 ; i < string.length; i++) {
+
+      letter = string.charAt(i);
+      count = counts[letter];
+
+      if (counts[letter] >= 1){
+        counts[letter] ++;
+      } else {
+        counts[letter] = 1;
+      }
+  }
+  console.log(counts);
+  return counts;
+}
+
+
+
 randomStr = generateRandomStr(3,7);
 console.log(randomStr);
 displayRandomStr(randomStr);
@@ -69,43 +103,60 @@ displayRandomStr(randomStr);
 // this function checks if the userWord is an actual word in the dictionary (words collected in the wordList array in words.js)
 var isInList = function(word){
   var status = "";
-  console.log('works');
+  console.log('isInList Check');
   for (var i = 0; i < wordList.length; i++){
     //console.log("word is  " + i + "  " + wordList[i]);
     if (word === wordList[i]){
       console.log(word);
       console.log(wordList[i]);
-      console.log('match');
-      //console.log("yey")
+      console.log('found in list !!!!');
       status = true;
       break;
     } else {
-      //console.log("meh");
+      // console.log("not found in list");
       status = false;
       //return false;
     }
   }
-  console.log("status: " + status);
+  // console.log("status: " + status);
   return status;
 }
 
 // this function checks if the userWord is in the randomStr generated.
 var isInStr = function(word,string){
+  console.log("isInStr Check");
+  wordCount       = countChar(word);
+  randomStrCount  = countChar(string);
+  // console.log("after countChar");
 
-  string = string.split('');
-  word = word.split('');
-  console.log('is valid letters   ');
-  console.log(string);
-  console.log(word);
+  var status = false;
 
-  return true;
+  //how to compare? 
+  for(var i = 0; i< Object.keys(wordCount).length; i++){
+    // console.log("in the loop");
+    for (var j = 0; j< Object.keys(randomStrCount).length; j++){
+      // console.log("in the inner loop");
+      if(Object.keys(wordCount)[i] === Object.keys(randomStrCount)[j]) {
+        console.log( Object.keys(wordCount)[i] + " match with " + Object.keys(randomStrCount)[j]);
+        if (Object.values(wordCount)[i] <= Object.values(randomStrCount)[j]){
+          console.log( Object.values(wordCount)[i] + " is equal/lesser than " + Object.values(randomStrCount)[j]);
+          status = true;
+        }
+      }
+      // console.log("inner loop end");
+    }
+    // console.log("outer loop end");
+  }
+
+  console.log("is in string " + status);
+  return status;
 }
 
 // this function checks if the userWord has already been guessed as part of this random string.
 var NotGuessedBefore = function(word){
 
-  console.log('in not part of previously guessed word');
-  console.log(word);
+  // console.log('in not part of previously guessed word');
+  // console.log(word);
 
   return true;
 }
@@ -119,7 +170,7 @@ var displayScore = function(score){
 
 // this function passes the word into 3 checks (isInStr,  isInList and NotGuessedBefore), if passes 2 checks, user gets 1 point, else no points.
 var checkUserWord = function(word){
-  console.log('checking ' + word);
+  // console.log('checking ' + word);
 
   checkInList            = isInList(word);
   checkInStr             = isInStr(word,randomStr);
@@ -140,9 +191,9 @@ var checkUserWord = function(word){
 //displaying the words into tiles. creating tiles on demand.
 var displayTiles = function(word){
 
-  console.log(word);
+  // console.log(word);
   var userTiles = word.split('');
-  console.log(userTiles);
+  // console.log(userTiles);
   // displayWord.innerText = '';
 
   displayWord.innerHTML = "";
@@ -160,26 +211,28 @@ var displayTiles = function(word){
 // add event listener to input box, detect any input and display the word in the tiles
 inputBox.addEventListener('input', function(event){
   console.clear();
-  console.log(event);
-  console.log('start');
+  // console.log(event);
+  // console.log('start');
   userWord = (event.target.value).toLowerCase();
+  userWord = userWord.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g,'');
+  userWord = userWord.split(' ').join('');
   var displayUserWord = userWord.toUpperCase();
   displayTiles(displayUserWord);
-  console.log(event);
-  console.log('end');
+  // console.log(event);
+  // console.log('end');
     if (event.target.value.includes(' ')) {
       userWord = "";
       displayWord.innerHTML = "";
       inputBox.value = "";
-      console.log('clear');
+      // console.log('clear');
     }
 })
 
 // add event listener to the input box, detect user enter to submit words for check and clear the inputs
 inputBox.addEventListener('keypress', function (event) {
-    console.log(event);
+    // console.log(event);
     if (event.key === 'Enter') {
-      console.log('enter ' + event.target.value);
+      // console.log('enter ' + event.target.value);
       checkUserWord(userWord);
       // displayWord.innerHTML = "";
       inputBox.value = "";
