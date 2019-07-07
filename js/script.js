@@ -14,6 +14,9 @@ var checkNotGuessedBefore;
 var wordCount;
 var randomStrCount;
 
+var lettersMatched = [];
+var lettersMatchedCount = 0;
+
 
 //function to shuffle generated string
 var shuffleStr = function(string){
@@ -124,12 +127,15 @@ var isInList = function(word){
 
 // this function checks if the userWord is in the randomStr generated.
 var isInStr = function(word,string){
+  var status = false;
+  var lettersMatched = [];
+  lettersMatchedCount = 0;
+
   console.log("isInStr Check");
+
   wordCount       = countChar(word);
   randomStrCount  = countChar(string);
   // console.log("after countChar");
-
-  var status = false;
 
   //how to compare? 
   for(var i = 0; i< Object.keys(wordCount).length; i++){
@@ -137,15 +143,27 @@ var isInStr = function(word,string){
     for (var j = 0; j< Object.keys(randomStrCount).length; j++){
       // console.log("in the inner loop");
       if(Object.keys(wordCount)[i] === Object.keys(randomStrCount)[j]) {
+
         console.log( Object.keys(wordCount)[i] + " match with " + Object.keys(randomStrCount)[j]);
+
         if (Object.values(wordCount)[i] <= Object.values(randomStrCount)[j]){
           console.log( Object.values(wordCount)[i] + " is equal/lesser than " + Object.values(randomStrCount)[j]);
-          status = true;
+          lettersMatched.push(true);
+          console.log('letters matched' + lettersMatched);
         }
       }
-      // console.log("inner loop end");
     }
-    // console.log("outer loop end");
+  }
+
+  for (var k = 0; k < lettersMatched.length; k++){
+    if (lettersMatched[k] === true ){
+      lettersMatchedCount = lettersMatchedCount +1;
+      console.log('letters matched count' + lettersMatchedCount);
+    }
+  }
+
+  if (lettersMatchedCount === userWord.length){
+    status = true;
   }
 
   console.log("is in string " + status);
