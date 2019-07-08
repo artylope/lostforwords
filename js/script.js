@@ -318,8 +318,8 @@ var awardScore = function(word){
 }
 // add event listener to input box, detect any input and display the word in the tiles
 inputBox.addEventListener('input', function(event){
-  console.clear();
-  // console.log(event);
+  // console.clear();
+  console.log(event);
   // console.log('start');
   userWord = (event.target.value).toLowerCase();
   userWord = userWord.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g,'');
@@ -334,6 +334,13 @@ inputBox.addEventListener('input', function(event){
       inputBox.value = "";
       // console.log('clear');
     }
+
+    if (event.target.value.includes('1')){
+      userWord = "";
+      displayWord.innerHTML = "";
+      inputBox.value = "";
+    }
+
 })
 
 // add event listener to the input box, detect user enter to submit words for check and clear the inputs
