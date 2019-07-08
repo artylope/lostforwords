@@ -17,6 +17,8 @@ var randomStrCount;
 var lettersMatched = [];
 var lettersMatchedCount = 0;
 
+var wordsGuessed = [];
+
 
 //function to shuffle generated string
 var shuffleStr = function(string){
@@ -177,10 +179,16 @@ var isInStr = function(word,string){
 // this function checks if the userWord has already been guessed as part of this random string.
 var NotGuessedBefore = function(word){
 
-  // console.log('in not part of previously guessed word');
-  // console.log(word);
+  var status = true;
 
-  return true;
+  for (var i=0; i < wordsGuessed.length; i++){
+    if (word === wordsGuessed[i]){
+      status = false;
+      break;
+    }
+  }
+
+  return status;
 }
 
 //this function display the score
@@ -200,9 +208,13 @@ var checkUserWord = function(word){
   // console.log(checkInList);
   // console.log(checkInStr);
 
-  if ( checkInList === true && checkInStr === true){
+  if ( checkInList === true && checkInStr === true && checkNotGuessedBefore === true){
+
+    wordsGuessed.push(word);
+
     score += 1;
     displayScore(score);
+    console.log('words guessed: ' + wordsGuessed);
     console.log('total score ' + score);
     var tiles = document.querySelector('#display-word').childNodes;
     for (var i = 0; i < tiles.length; i++){
@@ -289,22 +301,18 @@ document.addEventListener('keypress', function(event){
   if (event.key === '1') {
     randomStr = generateRandomStr(3,7);
     displayRandomStr(randomStr);
+    wordsGuessed = [];
   } else if (event.key === '0') {
     document.location.reload();
   }
 });
 
-//check if can form word from random string, enough letters.
+
 //keep an array of all guessed words, make sure not repeated
 //reject special characters
-//a key to reset random tiles
-//make random strinng generator better. 3 vowels
-//display score
 //add timer
-
-
 //should give more points to longer words
+
+//using difficult letters give more points, like scrabble.
 //get all possible words from the generated string.
 //- points if reset string or make time shorter (if no more words possible)
-//using difficult letters give more points, like scrabble.
-//wrong word something happen.

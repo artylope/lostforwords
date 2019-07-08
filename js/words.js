@@ -1893,6 +1893,7 @@ var wordList = [
 "anguishes",
 "angular",
 "angularity",
+"angus",
 "anhydrous",
 "anil",
 "aniline",
