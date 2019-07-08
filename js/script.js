@@ -232,8 +232,8 @@ var checkUserWord = function(word){
   if ( checkInList === true && checkInStr === true && checkNotGuessedBefore === true){
 
     wordsGuessed.push(word);
-
-    score += 1;
+    awardScore(word);
+    // score += 1;
     displayScore(score);
     console.log('words guessed: ' + wordsGuessed);
     console.log('total score ' + score);
@@ -292,7 +292,14 @@ var displayTiles = function(word){
 
 }
 
-
+//a function to give scroe
+var awardScore = function(word){
+  if(word.length <= 3){
+    score = score + 1;
+  } else if (word.length > 3){
+    score = score + 1 + (word.length - 3);
+  }
+}
 // add event listener to input box, detect any input and display the word in the tiles
 inputBox.addEventListener('input', function(event){
   console.clear();
