@@ -279,3 +279,14 @@ input{
     margin: 0px 10px;
   }
 }
+
+
+#feedback-score{
+  position: absolute;
+  z-index: 99;
+  font-weight: 500;
+  font-size: 80px;
+  color: lightgreen;
+  top: 550px;
+  right: 350px;
+}

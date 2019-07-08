@@ -2,6 +2,7 @@ var displayWord = document.querySelector('#display-word');
 var inputBox = document.querySelector('#user-word');
 var randomStringDiv = document.querySelector('#random-string');
 var guessedWords = document.querySelector('#guessed-words');
+var feedbackScore = document.querySelector('#feedback-score');
 
 var randomStr = "";
 var userWord = "";
@@ -294,11 +295,26 @@ var displayTiles = function(word){
 
 //a function to give scroe
 var awardScore = function(word){
+  var amountToAdd = 0;
+
   if(word.length <= 3){
-    score = score + 1;
+    amountToAdd = 1;
+
   } else if (word.length > 3){
-    score = score + 1 + (word.length - 3);
+    amountToAdd = 1 + (word.length - 3);
   }
+
+  score = score + amountToAdd;
+  var scoreToAdd = document.createElement('div');
+  scoreToAdd.setAttribute('class','add-score');
+  scoreToAdd.innerText = "+" + amountToAdd;
+  feedbackScore.appendChild(scoreToAdd);
+
+  setTimeout( function(){
+    feedbackScore.innerHTML = '';
+  }, 600 );
+
+  return amountToAdd;
 }
 // add event listener to input box, detect any input and display the word in the tiles
 inputBox.addEventListener('input', function(event){
