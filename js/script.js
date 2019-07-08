@@ -319,7 +319,7 @@ var awardScore = function(word){
 // add event listener to input box, detect any input and display the word in the tiles
 inputBox.addEventListener('input', function(event){
   // console.clear();
-  console.log(event);
+  // console.log(event);
   // console.log('start');
   userWord = (event.target.value).toLowerCase();
   userWord = userWord.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g,'');
