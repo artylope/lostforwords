@@ -140,19 +140,25 @@ var isInStr = function(word,string){
   randomStrCount  = countChar(string);
   // console.log("after countChar");
 
+  var wordCountKeys   = Object.keys(wordCount);
+  var wordCountValues = Object.values(wordCount);
+
+  var randomStrCountKeys   = Object.keys(randomStrCount);
+  var randomStrCountValues = Object.values(randomStrCount);
+
   //how to compare? 
-  for(var i = 0; i< Object.keys(wordCount).length; i++){
+  for(var i = 0; i< wordCountKeys.length; i++){
     // console.log("in the loop");
-    for (var j = 0; j< Object.keys(randomStrCount).length; j++){
+    for (var j = 0; j< randomStrCountKeys.length; j++){
       // console.log("in the inner loop");
-      if(Object.keys(wordCount)[i] === Object.keys(randomStrCount)[j]) {
+      if( wordCountKeys[i] === randomStrCountKeys[j]) {
 
-        console.log( Object.keys(wordCount)[i] + " match with " + Object.keys(randomStrCount)[j]);
+        console.log( wordCountKeys[i] + " match with " + randomStrCountKeys[j]);
 
-        if (Object.values(wordCount)[i] <= Object.values(randomStrCount)[j]){
-          console.log( Object.values(wordCount)[i] + " is equal/lesser than " + Object.values(randomStrCount)[j]);
+        if (wordCountValues[i] <= randomStrCountValues[j]){
+          console.log( wordCountValues[i] + " is equal/lesser than " + randomStrCountValues[j]);
 
-          for(var k = 0; k < Object.values(wordCount)[i]; k++ ){
+          for(var k = 0; k < wordCountValues[i]; k++ ){
             lettersMatched.push(true);
           }
 
