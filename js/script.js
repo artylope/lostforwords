@@ -148,7 +148,11 @@ var isInStr = function(word,string){
 
         if (Object.values(wordCount)[i] <= Object.values(randomStrCount)[j]){
           console.log( Object.values(wordCount)[i] + " is equal/lesser than " + Object.values(randomStrCount)[j]);
-          lettersMatched.push(true);
+
+          for(var k = 0; k < Object.values(wordCount)[i]; k++ ){
+            lettersMatched.push(true);
+          }
+          
           console.log('letters matched' + lettersMatched);
         }
       }
@@ -200,8 +204,16 @@ var checkUserWord = function(word){
     score += 1;
     displayScore(score);
     console.log('total score ' + score);
+    var tiles = document.querySelector('#display-word').childNodes;
+    for (var i = 0; i < tiles.length; i++){
+      tiles[i].classList.add("correct");
+    }
   } else {
     console.log('meh!');
+    var tiles = document.querySelector('#display-word').childNodes;
+    for (var i = 0; i < tiles.length; i++){
+      tiles[i].classList.add("wrong");
+    }
   }
 }
 
@@ -268,7 +280,7 @@ document.addEventListener('keypress', function(event){
     randomStr = generateRandomStr(3,7);
     displayRandomStr(randomStr);
   } else if (event.key === '0') {
-    document.location.reload(); 
+    document.location.reload();
   }
 });
 
