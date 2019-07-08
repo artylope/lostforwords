@@ -21,6 +21,12 @@ var lettersMatchedCount = 0;
 var wordsGuessed = [];
 
 
+window.onload = function() {
+  randomStr = generateRandomStr(3,7);
+  // console.log(randomStr);
+  displayRandomStr(randomStr);
+};
+
 //function to shuffle generated string
 var shuffleStr = function(string){
     var a = string.split(""),
@@ -55,7 +61,7 @@ var generateRandomStr = function (vowelsNum, consonantsNum){
    return result;
 }
 
-//display random string in the random string div
+//display random string in the random string div as tiles
 var displayRandomStr = function(string){
   randomStringDiv.innerText = string.toUpperCase();
   var randomStringTiles = string.split('');
@@ -71,7 +77,7 @@ var displayRandomStr = function(string){
 
 }
 
-//fucntion to count number of characters
+//fucntion to count number of characters and make it into an object.
 var countChar = function(string){
 
   //make all lower case
@@ -82,7 +88,7 @@ var countChar = function(string){
   string = string.split(' ').join('');
   // console.log(string);
 
-   //array to store the counts
+  //make into an array to store the counts
   var counts = {};
   var letter, count;
   for (var i =0 ; i < string.length; i++) {
@@ -96,26 +102,21 @@ var countChar = function(string){
         counts[letter] = 1;
       }
   }
-  console.log(counts);
+
   return counts;
 }
 
-
-
-randomStr = generateRandomStr(3,7);
-console.log(randomStr);
-displayRandomStr(randomStr);
-
 // this function checks if the userWord is an actual word in the dictionary (words collected in the wordList array in words.js)
 var isInList = function(word){
+
   var status = "";
   console.log('isInList Check');
   for (var i = 0; i < wordList.length; i++){
     //console.log("word is  " + i + "  " + wordList[i]);
     if (word === wordList[i]){
-      console.log(word);
-      console.log(wordList[i]);
-      console.log('found in list !!!!');
+      console.log('user types: ' + word);
+      console.log('matches with ' + wordList[i] + ' in dictionary');
+      // console.log('found in list !!!!');
       status = true;
       break;
     } else {
@@ -125,7 +126,14 @@ var isInList = function(word){
     }
   }
   // console.log("status: " + status);
+  if (status === false){
+    console.log('Check 1: FAIL not found in dictionary');
+  } else if (status === true){
+    console.log('Check 1: PASS found in dictionary!');
+  }
+
   return status;
+
 }
 
 // this function checks if the userWord is in the randomStr generated.
@@ -134,7 +142,7 @@ var isInStr = function(word,string){
   var lettersMatched = [];
   lettersMatchedCount = 0;
 
-  console.log("isInStr Check");
+  // console.log("isInStr Check");
 
   wordCount       = countChar(word);
   randomStrCount  = countChar(string);
@@ -153,16 +161,16 @@ var isInStr = function(word,string){
       // console.log("in the inner loop");
       if( wordCountKeys[i] === randomStrCountKeys[j]) {
 
-        console.log( wordCountKeys[i] + " match with " + randomStrCountKeys[j]);
+        // console.log( wordCountKeys[i] + " match with " + randomStrCountKeys[j]);
 
         if (wordCountValues[i] <= randomStrCountValues[j]){
-          console.log( wordCountValues[i] + " is equal/lesser than " + randomStrCountValues[j]);
+          // console.log( wordCountValues[i] + " is equal/lesser than " + randomStrCountValues[j]);
 
           for(var k = 0; k < wordCountValues[i]; k++ ){
             lettersMatched.push(true);
           }
 
-          console.log('letters matched' + lettersMatched);
+          // console.log('letters matched' + lettersMatched);
         }
       }
     }
@@ -171,7 +179,7 @@ var isInStr = function(word,string){
   for (var k = 0; k < lettersMatched.length; k++){
     if (lettersMatched[k] === true ){
       lettersMatchedCount = lettersMatchedCount +1;
-      console.log('letters matched count' + lettersMatchedCount);
+      // console.log('letters matched count' + lettersMatchedCount);
     }
   }
 
@@ -179,22 +187,28 @@ var isInStr = function(word,string){
     status = true;
   }
 
-  console.log("is in string " + status);
+  // console.log("is in string " + status);
+  if (status === false){
+    console.log('Check 2: FAIL cannot form word from list');
+  } else if (status === true){
+    console.log('Check 2: PASS can form word from list!');
+  }
   return status;
 }
 
 // this function checks if the userWord has already been guessed as part of this random string.
-var NotGuessedBefore = function(word){
-
+var notGuessedBefore = function(word){
+  // console.log('in not guessed before check');
   var status = true;
 
   for (var i=0; i < wordsGuessed.length; i++){
     if (word === wordsGuessed[i]){
       status = false;
+      console.log('Check 3: FAIL Guessed this word before');
       break;
     }
   }
-
+  console.log('Check 3: PASS New word');
   return status;
 }
 
@@ -211,7 +225,7 @@ var checkUserWord = function(word){
 
   checkInList            = isInList(word);
   checkInStr             = isInStr(word,randomStr);
-  checkNotGuessedBefore  = NotGuessedBefore(word);
+  checkNotGuessedBefore  = notGuessedBefore(word);
   // console.log(checkInList);
   // console.log(checkInStr);
 
@@ -230,20 +244,20 @@ var checkUserWord = function(word){
       tiles[i].classList.add("correct");
     }
 
+    inputBox.value = "";
     setTimeout(function(){
       displayWord.innerHTML = "";
-      inputBox.value = "";
     },500);
 
   } else {
-    console.log('meh!');
+    console.log('No score added');
+    inputBox.value = "";
     var tiles = document.querySelector('#display-word').childNodes;
     for (var i = 0; i < tiles.length; i++){
       tiles[i].classList.add("wrong");
     }
     setTimeout(function(){
       displayWord.innerHTML = "";
-      inputBox.value = "";
     },500);
   }
 }
@@ -256,6 +270,7 @@ var displayGuessedWord = function(word){
     eachWord.innerText = word;
     eachWord.setAttribute('class', 'each-word');
     guessedWords.appendChild(eachWord);
+
 }
 
 //displaying the words into tiles. creating tiles on demand.
@@ -328,7 +343,6 @@ document.addEventListener('keypress', function(event){
 });
 
 
-//keep an array of all guessed words, make sure not repeated
 //reject special characters
 //add timer
 //should give more points to longer words
