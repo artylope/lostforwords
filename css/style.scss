@@ -3,8 +3,8 @@
 $primary: #f6d347;
 $primary-shadow: #bb851d;
 
-$wrong: #e87676;
-$wrong-shadow: #c34949;
+$wrong: #ff2525;
+$wrong-shadow: #8f1b1b;
 
 $correct: #0df590;
 $correct-shadow: #25af73;
@@ -28,7 +28,7 @@ body{
 h1{
   font-size: 80px;
   color: $primary;
-  margin-top: 120px;
+  margin-top: 140px;
   margin-bottom: 10px;
   filter: drop-shadow(0px 4px 0px  #bb851d);
 }
@@ -95,10 +95,10 @@ h1{
 
 @-webkit-keyframes correct {
   from {
-    background: green;
-    font-size: 30px;
-    width: 60px;
-    box-shadow: 0px 2px 0px 0px $correct-shadow;
+    background: $correct;
+    font-size: 100px;
+    width: 160px;
+    box-shadow: 0px 8px 0px 0px $correct-shadow;
   }
   to {
     font-size: 50px;
@@ -109,10 +109,10 @@ h1{
 /* Standard syntax */
 @keyframes correct {
   from {
-    background: green;
-    font-size: 30px;
-    width: 60px;
-    box-shadow: 0px 2px 0px 0px $correct-shadow;
+    background: $correct;
+    font-size: 100px;
+    width: 160px;
+    box-shadow: 0px 8px 0px 0px $correct-shadow;
   }
   to {
     font-size: 50px;
@@ -122,7 +122,7 @@ h1{
 
 @-webkit-keyframes wrong {
   from {
-    background: red;
+    background: $wrong;
     font-size: 30px;
     width: 60px;
     box-shadow: 0px 2px 0px 0px $wrong-shadow;
@@ -136,7 +136,7 @@ h1{
 /* Standard syntax */
 @keyframes wrong {
   from {
-    background-color: red;
+    background-color: $wrong;
     font-size: 30px;
     width: 60px;
     box-shadow: 0px 2px 0px 0px $wrong-shadow;
