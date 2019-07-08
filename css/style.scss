@@ -76,18 +76,74 @@ h1{
   }
 
   &.correct{
+    -webkit-animation-name: corr; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: .2s; /* Safari 4.0 - 8.0 */
+    animation-name: correct;
+    animation-duration: .2s;
     box-shadow: 0px 8px 0px 0px $correct-shadow;
     filter: drop-shadow(0px 5px 2px rgba(32,40,43,.8));
     background: $correct;
   }
 
   &.wrong{
+    -webkit-animation-name: wrong; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: .2s; /* Safari 4.0 - 8.0 */
+    animation-name: wrong;
+    animation-duration: .2s;
+  }
+}
+
+@-webkit-keyframes correct {
+  from {
+    background: green;
     font-size: 30px;
     width: 60px;
-    margin: 20px 5px;
+    box-shadow: 0px 2px 0px 0px $correct-shadow;
+  }
+  to {
+    font-size: 50px;
+    width: 80px;
+  }
+}
+
+/* Standard syntax */
+@keyframes correct {
+  from {
+    background: green;
+    font-size: 30px;
+    width: 60px;
+    box-shadow: 0px 2px 0px 0px $correct-shadow;
+  }
+  to {
+    font-size: 50px;
+    width: 80px;
+  }
+}
+
+@-webkit-keyframes wrong {
+  from {
+    background: red;
+    font-size: 30px;
+    width: 60px;
     box-shadow: 0px 2px 0px 0px $wrong-shadow;
-    filter: drop-shadow(0px 5px 2px rgba(32,40,43,.8));
-    background: $wrong;
+  }
+  to {
+    font-size: 50px;
+    width: 80px;
+  }
+}
+
+/* Standard syntax */
+@keyframes wrong {
+  from {
+    background-color: red;
+    font-size: 30px;
+    width: 60px;
+    box-shadow: 0px 2px 0px 0px $wrong-shadow;
+  }
+  to {
+    font-size: 50px;
+    width: 80px;
   }
 }
 

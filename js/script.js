@@ -152,7 +152,7 @@ var isInStr = function(word,string){
           for(var k = 0; k < Object.values(wordCount)[i]; k++ ){
             lettersMatched.push(true);
           }
-          
+
           console.log('letters matched' + lettersMatched);
         }
       }
@@ -208,12 +208,22 @@ var checkUserWord = function(word){
     for (var i = 0; i < tiles.length; i++){
       tiles[i].classList.add("correct");
     }
+
+    setTimeout(function(){
+      displayWord.innerHTML = "";
+      inputBox.value = "";
+    },500);
+
   } else {
     console.log('meh!');
     var tiles = document.querySelector('#display-word').childNodes;
     for (var i = 0; i < tiles.length; i++){
       tiles[i].classList.add("wrong");
     }
+    setTimeout(function(){
+      displayWord.innerHTML = "";
+      inputBox.value = "";
+    },500);
   }
 }
 
