@@ -261,6 +261,17 @@ inputBox.addEventListener('keypress', function (event) {
     }
 });
 
+//add event listener to reset random String
+
+document.addEventListener('keypress', function(event){
+  if (event.key === '1') {
+    randomStr = generateRandomStr(3,7);
+    displayRandomStr(randomStr);
+  } else if (event.key === '0') {
+    document.location.reload(); 
+  }
+});
+
 //check if can form word from random string, enough letters.
 //keep an array of all guessed words, make sure not repeated
 //reject special characters
