@@ -1,6 +1,7 @@
 var displayWord = document.querySelector('#display-word');
 var inputBox = document.querySelector('#user-word');
 var randomStringDiv = document.querySelector('#random-string');
+var guessedWords = document.querySelector('#guessed-words');
 
 var randomStr = "";
 var userWord = "";
@@ -216,6 +217,8 @@ var checkUserWord = function(word){
     displayScore(score);
     console.log('words guessed: ' + wordsGuessed);
     console.log('total score ' + score);
+    displayGuessedWord(word);
+
     var tiles = document.querySelector('#display-word').childNodes;
     for (var i = 0; i < tiles.length; i++){
       tiles[i].classList.add("correct");
@@ -239,6 +242,15 @@ var checkUserWord = function(word){
   }
 }
 
+//displaying the words into tiles. creating tiles on demand.
+var displayGuessedWord = function(word){
+
+  // guessedWords.innerHTML = "";
+    var eachWord = document.createElement('div');
+    eachWord.innerText = word;
+    eachWord.setAttribute('class', 'each-word');
+    guessedWords.appendChild(eachWord);
+}
 
 //displaying the words into tiles. creating tiles on demand.
 var displayTiles = function(word){
@@ -301,7 +313,9 @@ document.addEventListener('keypress', function(event){
   if (event.key === '1') {
     randomStr = generateRandomStr(3,7);
     displayRandomStr(randomStr);
+    guessedWords.innerHTML='';
     wordsGuessed = [];
+
   } else if (event.key === '0') {
     document.location.reload();
   }

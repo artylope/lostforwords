@@ -152,13 +152,11 @@ h1 {
   display: flex;
   flex-direction: row;
   width: 100%;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  align-self: flex-end;
   background: #233741;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  bottom: 0; }
+  bottom: 0;
+  height: 130px; }
   .instruction div {
     display: flex;
     flex-direction: row;
@@ -204,3 +202,19 @@ input {
   font-size: 50px;
   letter-spacing: 2px;
   color: #E9C46A; }
+
+#guessed-words {
+  position: absolute;
+  bottom: 130px;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  left: 0; }
+  #guessed-words .each-word {
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 40px;
+    color: #41677a;
+    margin: 0px 10px; }
