@@ -1,3 +1,19 @@
+//screens dom selectors
+const gameIntroScreen   = document.querySelector('#game-intro');
+const inGameScreen      = document.querySelector('#in-game');
+const gameEndScreen     = document.querySelector('#game-end');
+const game321Screen     = document.querySelector('#game-321');
+const instructionScreen = document.querySelector('#instruction');
+
+const starter   = document.querySelector('#starter');
+
+const timebar  = document.querySelector('#timebar');
+const time            = 1*60; //in seconds
+var timeLeft          = time;
+
+var gameRunning     = false;
+
+//in game dom selectors
 var displayWord = document.querySelector('#display-word');
 var inputBox = document.querySelector('#user-word');
 var randomStringDiv = document.querySelector('#random-string');
@@ -21,16 +37,99 @@ var lettersMatchedCount = 0;
 
 var wordsGuessed = [];
 
-var gameRunning = false;
 
 
+var returnIntro = function(){
+  console.clear();
+  gameIntroScreen.style.visibility = 'visible';
+  inGameScreen.style.visibility = 'hidden';
+  gameEndScreen.style.visibility = 'hidden';
+  game321Screen.style.visibility = 'hidden';
+  instructionScreen.style.visibility = 'hidden';
 
-window.onload = function() {
+}
+
+var startGame = function(){
+  //reset timer
+  console.log('start game');
+  gameIntroScreen.style.visibility = 'hidden';
+  inGameScreen.style.visibility = 'visible';
+  gameEndScreen.style.visibility = 'hidden';
+  game321Screen.style.visibility = 'hidden';
+  instructionScreen.style.visibility = 'visible';
+  startTimer();
+
+  console.clear();
+  console.log('in startgame');
+  inputBox.focus();
+  inputBox.value = "";
+  guessedWords.innerText = '';
+  displayWord.innerHTML = "";
   randomStr = generateRandomStr(3,7);
-  // console.log(randomStr);
   displayRandomStr(randomStr);
-};
+  wordsGuessed = [];
+  score = 0;
+  gameRunning = true;
+  timeLeft = time;
+  console.log('in startgame end');
 
+}
+
+
+var start321 = function(){
+  var counter = 3;
+  starter.innerText = counter;
+
+  gameIntroScreen.style.visibility = 'hidden';
+  inGameScreen.style.visibility = 'hidden';
+  gameEndScreen.style.visibility = 'hidden';
+  game321Screen.style.visibility = 'visible';
+  instructionScreen.style.visibility = 'hidden';
+
+  var display321 = setInterval(
+    function(){
+      counter = counter - 1;
+      starter.innerText = counter;
+      if(counter === 0){
+        starter.innerText = "Go!";
+      }
+    }
+  , 1000);
+
+  setTimeout(function(){
+    startGame();
+    clearInterval(display321);
+  }, 4000);
+}
+
+var startTimer = function(){
+    var countdown = setInterval( function(){
+        // console.log('timeleft ' + timeLeft);
+        // console.log('gameRunning = ' + gameRunning);
+
+        timebar.style.width = ((timeLeft/time)*100) + "%";
+
+        timeLeft = timeLeft - .1;
+      },100);
+
+    var stopTimer = setTimeout(
+                      function(){
+                        gameRunning = false;
+                        console.log('gameRunning = ' + gameRunning);
+                        endGame();
+                        clearInterval(countdown);
+                      }, (time * 1000)
+                    );
+}
+
+var endGame = function(){
+  gameIntroScreen.style.visibility = 'visible';
+  inGameScreen.style.visibility = 'hidden';
+  gameEndScreen.style.visibility = 'visible';
+  game321Screen.style.visibility = 'hidden';
+  instructionScreen.style.visibility = 'hidden';
+  gameRunning = false;
+}
 
 //function to shuffle generated string
 var shuffleStr = function(string){
@@ -347,7 +446,7 @@ inputBox.addEventListener('input', function(event){
       inputBox.value = "";
     }
 
-})
+});
 
 
 
