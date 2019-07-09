@@ -46,12 +46,19 @@
 
   <section id ="in-game">
     <div id="timebar"></div>
-    <h1>This is in game</h1>
+    <div id="scoreboard"><div id="board"><h3>Score</h3><div class="score">0</div></div></div>
+    <div id="random-string"></div>
+    <div class="user">
+      <input id="user-word" placeholder="Start Typing" type="text"></input>
+    </div>
+    <div id="feedback-score"></div>
+    <div id="display-word" class="word"></div>
+    <div id="guessed-words"></div>
   </section>
-
   <section id ="game-end">
     <div class="modal">
-      <h1>Game Over!</h1>
+      <h1>Time's Up</h1>
+      <div id="board"><h3>Score</h3><div class="score">0</div></div>
       <div class="button-wrapper">
         <button onclick="start321();">Replay Game</button>
         <button onclick="returnIntro();">Back to Main</button>
@@ -65,7 +72,11 @@
       <div><div class="tile">1</div> to skip tiles</div>
       <div><div class="tile">0</div> to reset game</div>
   </section>
-  <!-- <script src="js/words.js"></script> -->
+
   <script src="js/game.js"></script>
+  <script src="js/words.js"></script>
+  <!-- <script src="js/script.js"></script> -->
+
+
 </body>
 </html>

@@ -21,10 +21,6 @@ var lettersMatchedCount = 0;
 
 var wordsGuessed = [];
 
-var timer = 12; //in seconds
-var runningTime = timer;
-var background = document.querySelector('#background');
-
 var gameRunning = false;
 
 
@@ -224,8 +220,10 @@ var notGuessedBefore = function(word){
 //this function display the score
 
 var displayScore = function(score){
-  var scoreDiv = document.querySelector('#score');
-  scoreDiv.innerText = score;
+  var scoreDiv1 = document.querySelectorAll('.score')[0];
+  var scoreDiv2 = document.querySelectorAll('.score')[1];
+  scoreDiv1.innerText = score;
+  scoreDiv2.innerText = score;
 }
 
 // this function passes the word into 3 checks (isInStr,  isInList and NotGuessedBefore), if passes 2 checks, user gets 1 point, else no points.

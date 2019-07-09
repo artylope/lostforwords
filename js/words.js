@@ -2241,6 +2241,7 @@ var wordList = [
 "apothecaries",
 "apothecary",
 "apotheosis",
+"app",
 "appal",
 "appalled",
 "appalling",
