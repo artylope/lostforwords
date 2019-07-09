@@ -21,12 +21,20 @@ var lettersMatchedCount = 0;
 
 var wordsGuessed = [];
 
+var timer = 12; //in seconds
+var runningTime = timer;
+var background = document.querySelector('#background');
+
+var gameRunning = false;
+
+
 
 window.onload = function() {
   randomStr = generateRandomStr(3,7);
   // console.log(randomStr);
   displayRandomStr(randomStr);
 };
+
 
 //function to shuffle generated string
 var shuffleStr = function(string){
@@ -342,6 +350,8 @@ inputBox.addEventListener('input', function(event){
     }
 
 })
+
+
 
 // add event listener to the input box, detect user enter to submit words for check and clear the inputs
 inputBox.addEventListener('keypress', function (event) {

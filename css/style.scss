@@ -24,7 +24,6 @@ body{
   justify-content: flex-start;
   width: 100%;
   margin: 0 auto;
-
 }
 
 h1{
@@ -163,7 +162,7 @@ h1{
     font-size: 40px;
     padding: 20px 30px;
     margin-right: 20px;
-    margin-top: 20px;
+    margin-top: 30px;
     width: 80px;
 
     display: flex;
@@ -290,3 +289,54 @@ input{
   top: 550px;
   right: 350px;
 }
+
+
+#timebar {
+  display: block;
+  position: absolute;
+  top: 0;
+  margin: 0 auto;
+  background: $primary;
+  width: 100%;
+  height: 10px;
+}
+
+button{
+  font-family: 'Rubik', sans-serif;
+  display: flex;
+  flex-direction: row;
+  font-size: 30px;
+  font-weight: 500;
+  margin: 20px 5px;
+  padding: 20px 40px;
+  border: none;
+  align-items: center;
+  justify-content:center;
+  box-shadow: 0px 8px 0px 0px $primary-shadow;
+  filter: drop-shadow(0px 5px 2px rgba(32,40,43,.8));
+  background: $primary;
+  color: #333;
+  border-radius: 5px;
+  text-transform: uppercase;
+  text-align: center;
+  z-index: 200;
+
+  &:hover{
+    box-shadow: 0px 2px 0px 0px $primary-shadow;
+    transform: translateY(6px);
+  }
+
+  &:focus{
+    outline: darken($background, 10%);
+  }
+}
+
+// #overlay{
+//   display: block;
+//   position:fixed;
+//   background: red;
+//   opacity: .2;
+//   height: 100%;
+//   width: 100%;
+//   z-index: 100;
+// }
