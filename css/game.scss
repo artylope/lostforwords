@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap');
+
+$primary: #f6d347;
+$primary-shadow: #bb851d;
+
+$wrong: #ff2525;
+$wrong-shadow: #8f1b1b;
+
+$correct: #0df590;
+$correct-shadow: #25af73;
+
+$background: #2c4552;
+
+$footer-height: 130px;
+
+
+body{
+  font-family: 'Rubik', sans-serif;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #2c4552;
+  z-index: -1;
+  margin: 0;
+}
+
+//The screens
+#game-intro{
+  visibility: visible;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: -100px;
+  width: 100%;
+  height: 100%;
+}
+
+#in-game{
+  visibility: hidden;
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+#game-end{
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  // opacity: .6;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: space-around;
+
+  .modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    width: 70%;
+    background: $background;
+    z-index: 999;
+    border-radius: 5px;
+
+    button{
+      font-size: 26px;
+      padding: 20px 30px;
+    }
+  }
+}
+
+button{
+  font-family: 'Rubik', sans-serif;
+  display: flex;
+  flex-direction: row;
+  font-size: 30px;
+  font-weight: 500;
+  margin: 20px;
+  padding: 20px 40px;
+  border: none;
+  align-items: center;
+  justify-content:center;
+  box-shadow: 0px 8px 0px 0px $primary-shadow;
+  filter: drop-shadow(0px 5px 2px rgba(32,40,43,.8));
+  background: $primary;
+  color: #333;
+  border-radius: 5px;
+  text-transform: uppercase;
+  text-align: center;
+  z-index: 200;
+
+  &:hover{
+    box-shadow: 0px 2px 0px 0px $primary-shadow;
+    transform: translateY(6px);
+  }
+
+  &:focus{
+    outline: darken($background, 10%);
+  }
+}
+
+#starter{
+  font-size: 200px;
+  color: $primary;
+  font-weight: bold;
+  filter: drop-shadow(0px 4px 0px  #bb851d);
+
+}
+
+#instruction{
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background: darken($background, 5%);
+  bottom: 0;
+  height: $footer-height;
+
+  div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: lighten($background,30%);
+    font-size: 24px;
+    margin: 8px;
+
+      .tile{
+        width: auto;
+        padding: 10px 20px;
+        margin-left: 30px;
+        margin-right: 10px;
+        font-size: 20px;
+        color: #333;
+      }
+
+  }
+}
+
+h1{
+  font-size: 100px;
+  color: $primary;
+  filter: drop-shadow(0px 4px 0px  #bb851d);
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.rotate-3{
+  transform: rotate(20deg);
+}
+
+.rotate-2{
+  transform: rotate(10deg);
+}
+
+.rotate-1{
+  transform: rotate(5deg);
+}
+
+.rotate--3{
+  transform: rotate(-20deg);
+}
+
+.rotate--2{
+  transform: rotate(-10deg);
+}
+
+.rotate--1{
+  transform: rotate(-5deg);
+}
+
+
+.tagline{
+  color: $primary;
+  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.words-wrapper{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.word{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 30px;
+}
+
+.tile{
+  font-family: 'Rubik', sans-serif;
+  display: flex;
+  flex-direction: row;
+  font-size: 60px;
+  font-weight: 500;
+  width: 80px;
+  margin: 20px 5px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  align-items: center;
+  justify-content:center;
+  box-shadow: 0px 8px 0px 0px $primary-shadow;
+  filter: drop-shadow(0px 5px 2px rgba(32,40,43,.8));
+  background: $primary;
+  color: #333;
+  border-radius: 5px;
+  text-transform: uppercase;
+  text-align: center;
+
+  &.smaller{
+    font-size: 30px;
+    width: 60px;
+    margin: 10px 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  &.correct{
+    -webkit-animation-name: corr; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: .2s; /* Safari 4.0 - 8.0 */
+    animation-name: correct;
+    animation-duration: .2s;
+    box-shadow: 0px 8px 0px 0px $correct-shadow;
+    filter: drop-shadow(0px 5px 2px rgba(32,40,43,.8));
+    background: $correct;
+  }
+
+  &.wrong{
+    -webkit-animation-name: wrong; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: .2s; /* Safari 4.0 - 8.0 */
+    animation-name: wrong;
+    animation-duration: .2s;
+  }
+}
+
+.button-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+//game elements
+
+#timebar {
+  display: block;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  margin: 0 auto;
+  background: $primary;
+  width: 100%;
+  height: 15px;
+}

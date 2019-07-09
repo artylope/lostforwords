@@ -156,7 +156,8 @@ h1 {
   justify-content: center;
   background: #233741;
   bottom: 0;
-  height: 130px; }
+  height: 130px;
+  z-index: 999; }
   .instruction div {
     display: flex;
     flex-direction: row;

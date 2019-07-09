@@ -384,9 +384,10 @@ document.addEventListener('keypress', function(event){
 
 
 //reject special characters
-//add timer
-//should give more points to longer words
+//add timer and screens
 
-//using difficult letters give more points, like scrabble.
+//highlight words that guessed before
+//when the keys are typed show that feedback in the respective tile.
+
 //get all possible words from the generated string.
-//- points if reset string or make time shorter (if no more words possible)
+//- points or -time if reset string or make time shorter (if no more words possible)
