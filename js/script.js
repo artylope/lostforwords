@@ -476,12 +476,11 @@ document.addEventListener('keypress', function(event){
 
   } else if (event.key === '0') {
     document.location.reload();
-  }
+  } 
 });
 
 
 //reject special characters
-//add timer and screens
 
 //highlight words that guessed before
 //when the keys are typed show that feedback in the respective tile.

@@ -195,7 +195,7 @@ h1 {
     padding-top: 15px;
     padding-bottom: 15px; }
   .tile.correct {
-    -webkit-animation-name: corr;
+    -webkit-animation-name: correct;
     /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: .2s;
     /* Safari 4.0 - 8.0 */
