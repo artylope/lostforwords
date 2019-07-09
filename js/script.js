@@ -78,7 +78,7 @@ var displayRandomStr = function(string){
 
 }
 
-//fucntion to count number of characters and make it into an object.
+//function to count number of characters and make it into an object.
 var countChar = function(string){
 
   //make all lower case
@@ -318,7 +318,7 @@ var awardScore = function(word){
 }
 // add event listener to input box, detect any input and display the word in the tiles
 inputBox.addEventListener('input', function(event){
-  // console.clear();
+  console.clear();
   // console.log(event);
   // console.log('start');
   userWord = (event.target.value).toLowerCase();
