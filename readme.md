@@ -15,9 +15,9 @@ Lost for words is a word game that challenges the player to form as many words a
 2. Game will generate a string of random letters. Also make sure out of the 10 letters generated, there are 3 vowels and 7 consonants. Display it.
 3. When user key in any characters, the game display it in the "tiles" look.
 4. When user presses "enter", the word is submitted and the game does 3 checks.
-⋅⋅1. Check if the word can be formed from the string. Compares the number of each letters. 
-⋅⋅2. Check if the word is a "valid" word. Check against the list of words. 
-⋅⋅3. Check if the word has been guessed before. To prevent the user from keep entering the same word to get points. 
+---- Check if the word can be formed from the string. Compares the number of each letters. 
+---- Check if the word is a "valid" word. Check against the list of words. 
+---- Check if the word has been guessed before. To prevent the user from keep entering the same word to get points. 
 5. If correct, based on the length of word entered, assign scores. 2-3 letters (1 point). Each extra letter add 1 more point.
 6. When time is up, the end game screen pops up and shows the score and the respective button to go back to main or replay the game. 
 
