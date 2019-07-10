@@ -33,6 +33,7 @@ None. Just run index.html.
 6. - points or -time if reset string or make time shorter 
 7. Change the string if no more words possible for the string.
 8. Add some shakes. CSS Shakes
+9. Add some audio
 
 
 
